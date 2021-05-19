@@ -2,16 +2,17 @@
 
 //for package.json: "scripts":{"start": "node index.js"}
 
+const { functionTypeAnnotation } = require('@babel/types');
 const fs = require('fs')
 const inquirer = require('inquirer');
 
 const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
-const Intern = require('/lib/Intern');
-const Manager = require('/lib/Manager');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
 
-const generatePage = require('.');
-const writeHTML = require();
+//const generatePage = require('.');
+// const writeHTML = require();
 
 // list of questions to collect the output data
 function getInfo() {
@@ -79,9 +80,12 @@ function getInfo() {
                         }
                     }
                 }])
-                    .then(answers => {
-                        console.log(answers.gitHub)
-                        //Do I need to create another CONST for Answers/name,email,id,role and specific question?       
+                    .then(ans => {
+
+                        var newEngineer = new Engineer(answers.name, answers.email, answers.id, ans.github)
+                        //Do I need to create another CONST for Answers/name,email,id,role and specific question?     
+                        console.log(newEngineer)
+                        generateHTML(newEngineer)
                         addMore()
                     })
                 /////////// Intern Question
@@ -90,8 +94,8 @@ function getInfo() {
                     type: 'input',
                     name: 'school',
                     message: 'Enter Interns School',
-                    validate: schoolInput => {
-                        if (schoolInput) {
+                    validate: school => {
+                        if (school) {
                             return true;
                         } else {
                             console.log("Need to enter Intern's school!")
@@ -99,9 +103,11 @@ function getInfo() {
                         }
                     }
                 }])
-                    .then(answers => {
-                        console.log(answers.school);
-                        //Do I need to create another CONST for Answers/name,email,id,role and specific question?
+                    .then(ans => {
+                        var newIntern = new Intern(answers.name, answers.email,answers.id, ans.school)
+                        //Do I need to create another CONST for Answers/name,email,id,role and specific question?     
+                        console.log(newIntern)
+                        generateHTML(newIntern)
                         addMore()
                     })
                 ///////// Manager Question
@@ -110,8 +116,8 @@ function getInfo() {
                     type: 'input',
                     name: 'officeNumber',
                     message: "Enter Manager's office number",
-                    validate: officeInput => {
-                        if (officeInput) {
+                    validate: officeNumber => {
+                        if (officeNumber) {
                             return true;
                         } else {
                             console.log("Need to enter Manager's office number!")
@@ -119,9 +125,12 @@ function getInfo() {
                         }
                     }
                 }])
-                    .then(answers => {
-                        //Do I need to create another CONST for Answers/name,email,id,role and specific question?
-                        console.log(answers.officeNumber);
+                    .then(ans => {
+                        var newManager = new Manager(answers.name, answers.email, answers.id, ans.officeNumber)
+                        //Do I need to create another CONST for Answers/name,email,id,role and specific question?     
+                        console.log(newManager)
+                        generateHTML(newManager)
+                        addMore()
                     })
             }
         })
@@ -131,3 +140,24 @@ function getInfo() {
 }
 
 getInfo();
+
+
+function addMore() {
+    inquirer.prompt([{
+        type: 'list',
+        name: 'name',
+        choices: ['add more employees', 'exit application'],
+        message: 'Add employees'
+    }]).then(function (userResponse) {
+        switch (userResponse.name) {
+            case 'add more employees':
+                getInfo()
+                break;
+            default:
+                writeHTML()
+        }
+    })
+}
+function generateHTML(Employee) {
+    console.log(Employee);
+}
