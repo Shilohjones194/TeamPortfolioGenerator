@@ -10,6 +10,26 @@ const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+var HTMLcode = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>TeamProfile</title>
+</head>
+
+<body>
+    <header class="bg-primary text-center">
+        <h1>Team Profile system</h1>
+
+    </header>
+    <main class="container d-flex justify-content-evenly">`
+
+
 
 //const generatePage = require('.');
 // const writeHTML = require();
@@ -59,7 +79,7 @@ function getInfo() {
         type: 'list',
         name: 'role',
         message: "Employee's role",
-        choices: ["Employee", "Engineer", "Intern", "Manager"]
+        choices: ["Engineer", "Intern", "Manager"]
     }
     ])
         /// Need to make specific questions about Engineer(gitHub),  Intern(School) and Manager(office number):
@@ -104,7 +124,7 @@ function getInfo() {
                     }
                 }])
                     .then(ans => {
-                        var newIntern = new Intern(answers.name, answers.email,answers.id, ans.school)
+                        var newIntern = new Intern(answers.name, answers.email, answers.id, ans.school)
                         //Do I need to create another CONST for Answers/name,email,id,role and specific question?     
                         console.log(newIntern)
                         generateHTML(newIntern)
@@ -160,4 +180,37 @@ function addMore() {
 }
 function generateHTML(Employee) {
     console.log(Employee);
+    HTMLcode += `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">${Employee.getName()}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">${Employee.getRole()}</h6>
+        <a href="mailto:${Employee.getEmail()}" class="card-link">${Employee.getEmail()}</a>
+        <h6 class="card-subtitle mb-2 text-muted">Id:${Employee.getId()}</h6>`
+    if (Employee.getRole === 'Manager') {
+        HTMLcode += `<p>Office number: ${Employee.getOfficenumber()}</p>`
+
+    }
+    else if (Employee.getRole === 'Engineer') {
+        HTMLcode += `<a href="https://github.com/${Employee.getGithub()}" class="card-link">${Employee.getGithub()}</a>`
+    }
+    else if (Intern.getRole === 'Intern') {
+        HTMLcode += `<p>:School: ${Employee.getSchool()}</p>`
+
+    }
+    HTMLcode += `
+        </div >
+        </div >`
+}
+
+
+function writeHTML(){
+    HTMLcode += `  </main>
+    </body>
+    
+    </html>`
+    console.log(HTMLcode);
+    fs.writeFileSync('./dist/index.html', HTMLcode, function( err) {
+        if (err) throw err;
+        console.log('HTMLgenerator')
+    })
 }
