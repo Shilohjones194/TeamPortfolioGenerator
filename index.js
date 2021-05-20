@@ -182,15 +182,15 @@ function generateHTML(Employee) {
         <a href="mailto:${Employee.getEmail()}" class="card-link">${Employee.getEmail()}</a>
         <h6 class="card-subtitle mb-2 text-muted">Id:${Employee.getId()}</h6>`
         //Its not reading my else if statements//
-    if (Employee.getRole === 'Manager') {
+    if (Employee.getRole() === 'Manager') {
         //changed down below to h6 to see if it does anything
-        HTMLcode += `<h6 class ="card-subtitle mb-2 text-muted">${Employee.getOfficeNumber()}</h6>`
+        HTMLcode += `<p>Office Number: ${Employee.getOfficeNumber()}</p>`
     }
-    else if (Employee.getRole === 'Engineer') {
-        HTMLcode += `<a href="https://github.com/${Employee.getGithub()}" class="card-link">${Employee.getGithub()}</a>`
+    else if (Employee.getRole() === 'Engineer') {
+        HTMLcode += `<a href="https://github.com/${Employee.getGithub()}" class="card-link">Github Account:  ${Employee.getGithub()}</a>`
     }
-    else if (Intern.getRole === 'Intern') {
-        HTMLcode += `<p>:School: ${Employee.getSchool()}</p>`
+    else if (Employee.getRole() === 'Intern') {
+        HTMLcode += `<p>School: ${Employee.getSchool()}</p>`
 
     }
     HTMLcode += `
