@@ -1,11 +1,16 @@
-function Intern() {
-    this.name = name;
-    this.id = id;
-    this.email = email;
-    this.school = school;
-    this.getSchool() = getSchool;
-    this.getName() = getName;
-    this.getId() = getId;
-    this.getEmail() = getEmail;
-    this.getRole() = getRole;//Overridden to return 'Intern'
-}
+// const Intern = require('../lib/Intern');
+
+// const testIntern = new Intern("North", "NorthDakota@gmail.com", "2", "")
+
+// test('has a name', () => {
+//     expect(testIntern.name).toEqual(expect.any(String))
+//     expect(testIntern.name.length).toBeGreaterThan(2)
+// })
+
+// test('has a valid email address', () => {
+//     expect(testIntern.).toEqual()
+    
+// })
+// test('', () => {
+    
+// })

@@ -2,7 +2,6 @@
 
 //for package.json: "scripts":{"start": "node index.js"}
 
-const { functionTypeAnnotation } = require('@babel/types');
 const fs = require('fs')
 const inquirer = require('inquirer');
 
@@ -90,7 +89,7 @@ function getInfo() {
                 inquirer.prompt([{
                     type: 'input',
                     name: 'github',
-                    message: "Enter Engineer's GitHub",
+                    message: "Enter Engineer's GitHub Account name",
                     validate: gitInput => {
                         if (gitInput) {
                             return true;
@@ -101,10 +100,8 @@ function getInfo() {
                     }
                 }])
                     .then(ans => {
-
-                        var newEngineer = new Engineer(answers.name, answers.email, answers.id, ans.github)
-                        //Do I need to create another CONST for Answers/name,email,id,role and specific question?     
-                        console.log(newEngineer)
+                        var newEngineer = new Engineer(answers.name, answers.email, answers.id, ans.github) 
+                        //console.log(newEngineer)
                         generateHTML(newEngineer)
                         addMore()
                     })
@@ -124,9 +121,8 @@ function getInfo() {
                     }
                 }])
                     .then(ans => {
-                        var newIntern = new Intern(answers.name, answers.email, answers.id, ans.school)
-                        //Do I need to create another CONST for Answers/name,email,id,role and specific question?     
-                        console.log(newIntern)
+                        var newIntern = new Intern(answers.name, answers.email, answers.id, ans.school)  
+                        //console.log(newIntern)
                         generateHTML(newIntern)
                         addMore()
                     })
@@ -147,8 +143,7 @@ function getInfo() {
                 }])
                     .then(ans => {
                         var newManager = new Manager(answers.name, answers.email, answers.id, ans.officeNumber)
-                        //Do I need to create another CONST for Answers/name,email,id,role and specific question?     
-                        console.log(newManager)
+                        //console.log(newManager)
                         generateHTML(newManager)
                         addMore()
                     })
@@ -186,9 +181,10 @@ function generateHTML(Employee) {
         <h6 class="card-subtitle mb-2 text-muted">${Employee.getRole()}</h6>
         <a href="mailto:${Employee.getEmail()}" class="card-link">${Employee.getEmail()}</a>
         <h6 class="card-subtitle mb-2 text-muted">Id:${Employee.getId()}</h6>`
+        //Its not reading my else if statements//
     if (Employee.getRole === 'Manager') {
-        HTMLcode += `<p>Office number: ${Employee.getOfficenumber()}</p>`
-
+        //changed down below to h6 to see if it does anything
+        HTMLcode += `<h6 class ="card-subtitle mb-2 text-muted">${Employee.getOfficeNumber()}</h6>`
     }
     else if (Employee.getRole === 'Engineer') {
         HTMLcode += `<a href="https://github.com/${Employee.getGithub()}" class="card-link">${Employee.getGithub()}</a>`
