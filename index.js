@@ -1,7 +1,4 @@
 // run it with node index.js
-
-//for package.json: "scripts":{"start": "node index.js"}
-
 const fs = require('fs')
 const inquirer = require('inquirer');
 
@@ -23,15 +20,12 @@ var HTMLcode = `<!DOCTYPE html>
 
 <body>
     <header class="bg-primary text-center">
-        <h1>Team Profile system</h1>
+        <h1>My Team</h1>
 
     </header>
     <main class="container d-flex justify-content-evenly">`
 
 
-
-//const generatePage = require('.');
-// const writeHTML = require();
 
 // list of questions to collect the output data
 function getInfo() {
@@ -64,7 +58,7 @@ function getInfo() {
     {
         type: 'input',
         name: 'id',
-        message: "enter employee ID",
+        message: "Enter employee ID",
         validate: idInput => {
             if (idInput) {
                 return true;
@@ -110,7 +104,7 @@ function getInfo() {
                 inquirer.prompt([{
                     type: 'input',
                     name: 'school',
-                    message: 'Enter Interns School',
+                    message: "Enter Intern's School",
                     validate: school => {
                         if (school) {
                             return true;
@@ -149,9 +143,6 @@ function getInfo() {
                     })
             }
         })
-
-    /// still need to add option to add another teammate and loop over the questions again.
-
 }
 
 getInfo();
@@ -173,6 +164,7 @@ function addMore() {
         }
     })
 }
+// Generating option list.
 function generateHTML(Employee) {
     console.log(Employee);
     HTMLcode += `<div class="card" style="width: 18rem;">
@@ -184,7 +176,7 @@ function generateHTML(Employee) {
         //Its not reading my else if statements//
     if (Employee.getRole() === 'Manager') {
         //changed down below to h6 to see if it does anything
-        HTMLcode += `<p><strong> Office Number:<strong> ${Employee.getOfficeNumber()}</p>`
+        HTMLcode += `<p><strong> Office Number:</strong> ${Employee.getOfficeNumber()}</p>`
     }
     else if (Employee.getRole() === 'Engineer') {
         HTMLcode += `<strong> GitHub Account:</strong> <a href="https://github.com/${Employee.getGithub()}" class="card-link"> ${Employee.getGithub()}</a>`

@@ -1,5 +1,5 @@
 # TeamPortfolioGenerator
-
+ 
 # Acceptance Criteria
 GIVEN a command-line application that accepts user input
 

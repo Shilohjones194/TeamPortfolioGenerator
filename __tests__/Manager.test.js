@@ -1,11 +1,14 @@
-// const Manager = require('../lib/Manager');
+const Manager = require('../lib/Manager');
 
-// const testManager = new Manager("n", "lj@gmail.com", 4, "manager", 101)
+// // to fail test:
+// const testManager = new Manager("l", "lj@gmail.com", 4, "manager", 123-456-7890);
 
-// test('has a name', () => {
-//     expect(testManager.name).toEqual(expect.any(String))
-//     expect(testManager.name.length).toBeGreaterThan(2)
-// })
-// test('Id has value', () =>{
-//     expect(testManager.id).toEqual(expect.any(Number))
-// })
+
+
+//to pass test:
+// const testManager = new Manager("Luke", "shilohjonezz@gmail.com", 4, 123-456-8790);
+
+test('has a name', () => {
+    expect(testManager.name).toEqual(expect.any(String))
+    expect(testManager.name.length).toBeGreaterThan(2)
+})

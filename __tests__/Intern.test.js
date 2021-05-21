@@ -7,10 +7,6 @@
 //     expect(testIntern.name.length).toBeGreaterThan(2)
 // })
 
-// test('has a valid email address', () => {
-//     expect(testIntern.).toEqual()
-    
-// })
 // test('', () => {
     
 // })
