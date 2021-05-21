@@ -179,7 +179,7 @@ function generateHTML(Employee) {
     <div class="card-body">
         <h5 class="card-title">${Employee.getName()}</h5>
         <h6 class="card-subtitle mb-2 text-muted">${Employee.getRole()}</h6>
-        <a href="mailto:${Employee.getEmail()}" class="card-link">${Employee.getEmail()}</a>
+        <strong> Email:</strong> <a href="mailto:${Employee.getEmail()}" class="card-link"> ${Employee.getEmail()}</a>
         <h6 class="card-subtitle mb-2 text-muted">Id:${Employee.getId()}</h6>`
         //Its not reading my else if statements//
     if (Employee.getRole() === 'Manager') {
@@ -187,7 +187,7 @@ function generateHTML(Employee) {
         HTMLcode += `<p>Office Number: ${Employee.getOfficeNumber()}</p>`
     }
     else if (Employee.getRole() === 'Engineer') {
-        HTMLcode += `<a href="https://github.com/${Employee.getGithub()}" class="card-link">Github Account:  ${Employee.getGithub()}</a>`
+        HTMLcode += `<strong> GitHub Account:</strong> <a href="https://github.com/${Employee.getGithub()}" class="card-link"> ${Employee.getGithub()}</a>`
     }
     else if (Employee.getRole() === 'Intern') {
         HTMLcode += `<p>School: ${Employee.getSchool()}</p>`
