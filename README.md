@@ -1,6 +1,36 @@
 # TeamPortfolioGenerator
  
-# Acceptance Criteria
+## Description
+Through the command line quickly make a clean display of your employees and description.
+![image](https://user-images.githubusercontent.com/76697212/119193819-100a2500-ba37-11eb-853b-ff7e4190f58c.png).
+To Create this:
+![image](https://user-images.githubusercontent.com/76697212/119193966-3def6980-ba37-11eb-9e71-da8923b2eb97.png)
+
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Tests](#tests)
+* [Questions](#questions)
+* [Video](#video)
+* [Acceptance Criteria](#acceptance criteria)
+
+## Installation
+NPM install and Jest for Testing.
+
+## Usage
+You use it through the command line/git bash
+
+## Tests
+Tests can be found in the __tests__ folder, using "npm test".
+
+## Questions
+* Email: Please contact me at [Shilohjonezz@gmail.com](mailto:Shilohjonezz@gmail.com) if you have any questions.
+
+## Video
+Demo video: https://drive.google.com/file/d/1zL7lO8UPhypiZ7wjxcCvLAFWDT3uqt5h/view
+
+
+## Acceptance Criteria
 GIVEN a command-line application that accepts user input
 
 WHEN I am prompted for my team members and their information
